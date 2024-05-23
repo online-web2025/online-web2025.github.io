@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>使用技巧 | Hexo</title>
+    <title>Docker &amp;&amp; Compose Install | Hexo</title>
     
     
-        <meta name="keywords" content="Base Skill" />
+        <meta name="keywords" content="Docker" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Hexo指令在hexoblog文件夹内，右键点击Git Bash Here进入窗口输入指令  1、启动本地服务器 1hexo s 2、清空静态文件 1hexo clean 3、生成静态文件 1hexo g 4、上传至git 1hexo d 5、创建新文章 1hexo new 文章名称.md 6、安装Nodejs插件 1npm i 插件名称 --save 7、卸载Nodejs插件 1npm un 插">
+    <meta name="description" content="一、Docker安装与Docker-Compose安装1.安装 Docker（非大陆服务器）1wget -qO- get.docker.com | bash  1docker -v  #查看 docker 版本  1systemctl enable docker  # 设置开机自动启动 2.安装 Docker-compose（非大陆服务器）1sudo curl -L &quot;https:&#x2F;&#x2F;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用技巧">
-<meta property="og:url" content="http://example.com/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:title" content="Docker &amp;&amp; Compose Install">
+<meta property="og:url" content="http://example.com/wiki/Docker/Docker%20&&%20Compose%20Install/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Hexo指令在hexoblog文件夹内，右键点击Git Bash Here进入窗口输入指令  1、启动本地服务器 1hexo s 2、清空静态文件 1hexo clean 3、生成静态文件 1hexo g 4、上传至git 1hexo d 5、创建新文章 1hexo new 文章名称.md 6、安装Nodejs插件 1npm i 插件名称 --save 7、卸载Nodejs插件 1npm un 插">
+<meta property="og:description" content="一、Docker安装与Docker-Compose安装1.安装 Docker（非大陆服务器）1wget -qO- get.docker.com | bash  1docker -v  #查看 docker 版本  1systemctl enable docker  # 设置开机自动启动 2.安装 Docker-compose（非大陆服务器）1sudo curl -L &quot;https:&#x2F;&#x2F;g">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-23T16:06:40.000Z">
-<meta property="article:modified_time" content="2024-05-23T16:23:41.422Z">
+<meta property="article:published_time" content="2024-05-23T16:49:37.000Z">
+<meta property="article:modified_time" content="2024-05-23T16:50:51.417Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Base Skill">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
     
 
@@ -183,22 +183,22 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
-                            &nbsp;
-                            Docker
-                        </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker/Docker%20Bash%20Command/">Docker Bash Command</a></li>  <li class="file"><a href="/wiki/Docker/Docker%20&&%20Compose%20Install/">Docker && Compose Install</a></li>  </ul> 
-                    </li> 
-                    
                     <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
+                            Docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker/Docker%20Bash%20Command/">Docker Bash Command</a></li>  <li class="file active"><a href="/wiki/Docker/Docker%20&&%20Compose%20Install/">Docker && Compose Install</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             使用技巧
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%B8%80%E4%B8%AAHexo%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%99%E7%A8%8B/">一个Hexo的原始教程</a></li>  <li class="file active"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">使用技巧</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%B8%80%E4%B8%AAHexo%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%99%E7%A8%8B/">一个Hexo的原始教程</a></li>  <li class="file"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">使用技巧</a></li>  </ul> 
                     </li> 
                      </ul> 
     </div>
@@ -271,7 +271,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-使用技巧/使用技巧" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Docker/Docker &amp;&amp; Compose Install" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -281,20 +281,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">使用技巧</a>
+        <a class="article-category-link" href="/categories/Docker/">Docker</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Base-Skill/" rel="tag">Base Skill</a>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
-            <time datetime="2024-05-23T16:06:40.000Z" itemprop="datePublished">2024-05-24</time>
+        <a href="/wiki/Docker/Docker%20&&%20Compose%20Install/">
+            <time datetime="2024-05-23T16:49:37.000Z" itemprop="datePublished">2024-05-24</time>
         </a>
     </div>
 
@@ -305,13 +305,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/raw/main/source/_posts/使用技巧/使用技巧.md'> Source </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/raw/main/source/_posts/Docker/Docker &amp;&amp; Compose Install.md'> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/edit/main/source/_posts/使用技巧/使用技巧.md'> Edit </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/edit/main/source/_posts/Docker/Docker &amp;&amp; Compose Install.md'> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/commits/main/source/_posts/使用技巧/使用技巧.md'> History </a>
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/commits/main/source/_posts/Docker/Docker &amp;&amp; Compose Install.md'> History </a>
                             </div>
                         
                     </div>
@@ -319,7 +319,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            使用技巧
+            Docker &amp;&amp; Compose Install
         </h1>
     
 
@@ -332,46 +332,39 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Hexo指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">Git的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Docker%E5%AE%89%E8%A3%85%E4%B8%8EDocker-Compose%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">一、Docker安装与Docker-Compose安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-Docker%EF%BC%88%E9%9D%9E%E5%A4%A7%E9%99%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装 Docker（非大陆服务器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85-Docker-compose%EF%BC%88%E9%9D%9E%E5%A4%A7%E9%99%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装 Docker-compose（非大陆服务器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85-Docker%EF%BC%88%E5%9B%BD%E5%86%85%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装 Docker（国内服务器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85-Docker-compose%EF%BC%88%E5%9B%BD%E5%86%85%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">4.安装 Docker-compose（国内服务器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BF%85%E8%A6%81%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">二、必要设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%BE%E7%BD%AE%E4%B8%80"><span class="toc-number">2.1.</span> <span class="toc-text">1.设置一</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
-            <h2 id="Hexo指令"><a href="#Hexo指令" class="headerlink" title="Hexo指令"></a>Hexo指令</h2><p>在hexoblog文件夹内，右键点击Git Bash Here进入窗口输入指令</p>
-<ul>
-<li>1、启动本地服务器 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></li>
-<li>2、清空静态文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></li>
-<li>3、生成静态文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></li>
-<li>4、上传至git <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
-<li>5、创建新文章 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章名称.md</span><br></pre></td></tr></table></figure></li>
-<li>6、安装Nodejs插件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i 插件名称 --save</span><br></pre></td></tr></table></figure></li>
-<li>7、卸载Nodejs插件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un 插件名称 --save</span><br></pre></td></tr></table></figure></li>
-<li>8、查看插件是否安装 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list 插件名称</span><br></pre></td></tr></table></figure></li>
-<li>9、<a target="_blank" rel="noopener" href="https://hexoscript.github.io/using">一键部署脚本up.sh</a>  清空+生成+上传git source up.sh</li>
-<li>10、一键上传 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h2><p>Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。<br>Git是将代码和文档更新并上传至网站（或下载到本地）的数据备份方式。<br>配置账号名与邮箱信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email&quot;</span></span><br></pre></td></tr></table></figure>
-<p>生成密钥：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;email&quot;</span></span><br></pre></td></tr></table></figure>
-<p>查看密钥（复制到网站设置界面“SSH公钥”内）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>初始化本地仓库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init NAME</span><br></pre></td></tr></table></figure>
-<p>添加所有文件（不会删除文件）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .（将“.”替换成具体文件用于添加单个文件）</span><br></pre></td></tr></table></figure>
-<p>更新所有文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
-<p>添加注释(commit)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;注释内容&quot;</span></span><br></pre></td></tr></table></figure>
-<p>设置网站仓库地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://gitee.com/renahah/RenAhahWikiSource.git</span><br></pre></td></tr></table></figure>
-<p>删除网站仓库地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">rm</span> origin</span><br></pre></td></tr></table></figure>
-<p>同步网站仓库内容到本地：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master</span><br></pre></td></tr></table></figure>
-<p>由本地上传到网站：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+            <h2 id="一、Docker安装与Docker-Compose安装"><a href="#一、Docker安装与Docker-Compose安装" class="headerlink" title="一、Docker安装与Docker-Compose安装"></a>一、Docker安装与Docker-Compose安装</h2><h3 id="1-安装-Docker（非大陆服务器）"><a href="#1-安装-Docker（非大陆服务器）" class="headerlink" title="1.安装 Docker（非大陆服务器）"></a>1.安装 Docker（非大陆服务器）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- get.docker.com | bash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v  <span class="comment">#查看 docker 版本</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker  <span class="comment"># 设置开机自动启动</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-安装-Docker-compose（非大陆服务器）"><a href="#2-安装-Docker-compose（非大陆服务器）" class="headerlink" title="2.安装 Docker-compose（非大陆服务器）"></a>2.安装 Docker-compose（非大陆服务器）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version  <span class="comment">#查看 docker-compose 版本</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-安装-Docker（国内服务器）"><a href="#3-安装-Docker（国内服务器）" class="headerlink" title="3.安装 Docker（国内服务器）"></a>3.安装 Docker（国内服务器）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v  <span class="comment">#查看 docker 版本</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker  <span class="comment"># 设置开机自动启动</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-安装-Docker-compose（国内服务器）"><a href="#4-安装-Docker-compose（国内服务器）" class="headerlink" title="4.安装 Docker-compose（国内服务器）"></a>4.安装 Docker-compose（国内服务器）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/v2.1.1/docker-compose-`<span class="built_in">uname</span> -s`-`<span class="built_in">uname</span> -m` &gt; /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version  <span class="comment">#查看 docker-compose 版本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、必要设置"><a href="#二、必要设置" class="headerlink" title="二、必要设置"></a>二、必要设置</h2><h3 id="1-设置一"><a href="#1-设置一" class="headerlink" title="1.设置一"></a>1.设置一</h3><p>以下配置会增加一段自定义内网 IPv6 地址，开启容器的 IPv6 功能，以及限制日志文件大小，防止 Docker 日志塞满硬盘(泪的教训):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; /etc/docker/daemon.json &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    &quot;log-driver&quot;: &quot;json-file&quot;,</span></span><br><span class="line"><span class="string">    &quot;log-opts&quot;: &#123;</span></span><br><span class="line"><span class="string">        &quot;max-size&quot;: &quot;20m&quot;,</span></span><br><span class="line"><span class="string">        &quot;max-file&quot;: &quot;3&quot;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &quot;ipv6&quot;: true,</span></span><br><span class="line"><span class="string">    &quot;fixed-cidr-v6&quot;: &quot;fd00:dead:beef:c0::/80&quot;,</span></span><br><span class="line"><span class="string">    &quot;experimental&quot;:true,</span></span><br><span class="line"><span class="string">    &quot;ip6tables&quot;:true</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后重启 Docker 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+
+
 
 
 
@@ -394,19 +387,10 @@
     
 <nav id="article-nav">
     
-        <a href="/wiki/Docker/Docker%20Bash%20Command/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Docker Bash Command
-                
-            </div>
-        </a>
     
-    
-        <a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%B8%80%E4%B8%AAHexo%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/wiki/Docker/Docker%20Bash%20Command/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">一个Hexo的原始教程</div>
+            <div class="article-nav-title">Docker Bash Command</div>
         </a>
     
 </nav>
