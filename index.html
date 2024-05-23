@@ -191,6 +191,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker/Docker-compose-Halo/">Docker-compose--Halo</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             使用技巧
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%B8%80%E4%B8%AAHexo%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%99%E7%A8%8B/">一个Hexo的原始教程</a></li>  <li class="file"><a href="/wiki/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">使用技巧</a></li>  </ul> 
@@ -267,6 +276,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-Docker/Docker-compose-Halo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/docker/">docker</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/Docker/Docker-compose-Halo/">
+            <time datetime="2024-05-23T16:53:11.000Z" itemprop="datePublished">2024-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/raw/main/source/_posts/Docker/Docker-compose-Halo.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/edit/main/source/_posts/Docker/Docker-compose-Halo.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/commits/main/source/_posts/Docker/Docker-compose-Halo.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/Docker/Docker-compose-Halo/">Docker-compose--Halo</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;<span class="number">3.9</span>&#x27;  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: &#x27;halohub/halo:<span class="number">2.15</span>&#x27;  </span><br><span class="line">        volumes:  </span><br><span class="line">            - &#x27;~/.halo2:/root/.halo2&#x27;  </span><br><span class="line">        ports:  </span><br><span class="line">            - &#x27;<span class="number">8090</span>:<span class="number">8090</span>&#x27;  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
+<h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/wiki/Docker/Docker-compose-Halo/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-Docker/Docker &amp;&amp; Compose Install" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
