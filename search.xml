@@ -298,7 +298,7 @@ Hexo使用技巧
     <title>Incentive</title>
     <url>/wiki/Incentive/</url>
     <content><![CDATA[<font size="3">
-This is a page showing cute girls!！
+This is a page showing cute girls!！</font>
 meanwhile it is also an incentive！
 <span id="more"></span>
 ### A cute cat girl
@@ -311,7 +311,7 @@ meanwhile it is also an incentive！
 <li><a href></a></li>
 </ul>
 </blockquote>
-</font>]]></content>
+]]></content>
       <categories>
         <category>Incentive</category>
       </categories>
