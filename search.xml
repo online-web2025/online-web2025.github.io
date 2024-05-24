@@ -5,6 +5,7 @@
     <url>/wiki/DailyWord/</url>
     <content><![CDATA[<font size="3">
 本文意在记录每日遇到的较难的英语单词，草稿纸容易丢掉，记录在云上更有性价比！
+此项目将会成为一个长寿项目，记录每天！
 
 <span id="more"></span>
 <h2 id="当前时间"><a href="#当前时间" class="headerlink" title="当前时间"></a>当前时间</h2><p>Current time in format 1: <time id="current-time-format1"></time></p>
