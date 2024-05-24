@@ -9,15 +9,15 @@
         <meta name="keywords" content="Base Skill" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。Hexo使用技巧">
+    <meta name="description" content="本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。 Hexo使用技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo使用技巧">
 <meta property="og:url" content="http://example.com/wiki/Hexo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Wiki">
-<meta property="og:description" content="本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。Hexo使用技巧">
+<meta property="og:description" content="本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。 Hexo使用技巧">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-24T04:11:00.000Z">
-<meta property="article:modified_time" content="2024-05-24T10:46:57.228Z">
+<meta property="article:modified_time" content="2024-05-24T12:14:17.944Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Base Skill">
 <meta name="twitter:card" content="summary">
@@ -341,26 +341,37 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Hexo指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">Git的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">Git的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
-            <p>本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。<br>Hexo使用技巧</p>
+            <font size="3">
+本文为一些Hexo的指令，避免找寻资料的繁琐，后续也会不断增加内容。
+Hexo使用技巧
 <span id="more"></span>
-<h2 id="Hexo指令"><a href="#Hexo指令" class="headerlink" title="Hexo指令"></a>Hexo指令</h2><p>在hexoblog文件夹内，右键点击Git Bash Here进入窗口输入指令</p>
-<ul>
-<li>1、启动本地服务器 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></li>
-<li>2、清空静态文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></li>
-<li>3、生成静态文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></li>
-<li>4、上传至git <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
-<li>5、创建新文章 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章名称.md</span><br></pre></td></tr></table></figure></li>
-<li>6、安装Nodejs插件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i 插件名称 --save</span><br></pre></td></tr></table></figure></li>
-<li>7、卸载Nodejs插件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un 插件名称 --save</span><br></pre></td></tr></table></figure></li>
-<li>8、查看插件是否安装 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list 插件名称</span><br></pre></td></tr></table></figure></li>
-<li>9、<a target="_blank" rel="noopener" href="https://hexoscript.github.io/using">一键部署脚本up.sh</a>  清空+生成+上传git source up.sh</li>
-<li>10、一键上传 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
-</ul>
+## Hexo指令
+在hexoblog文件夹内，右键点击Git Bash Here进入窗口输入指令
+* 1、启动本地服务器 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+* 2、清空静态文件 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+* 3、生成静态文件 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+* 4、上传至git 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+* 5、创建新文章 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 文章名称.md</span><br></pre></td></tr></table></figure>
+* 6、安装Nodejs插件 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i 插件名称 --save</span><br></pre></td></tr></table></figure>
+* 7、卸载Nodejs插件 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un 插件名称 --save</span><br></pre></td></tr></table></figure>
+* 8、查看插件是否安装 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list 插件名称</span><br></pre></td></tr></table></figure>
+* 9、[一键部署脚本up.sh]( https://hexoscript.github.io/using)  清空+生成+上传git source up.sh
+* 10、一键上传 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
 <h2 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h2><p>Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。<br>Git是将代码和文档更新并上传至网站（或下载到本地）的数据备份方式。<br>配置账号名与邮箱信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email&quot;</span></span><br></pre></td></tr></table></figure>
 <p>生成密钥：</p>
@@ -396,7 +407,7 @@
 <li><a href></a></li>
 </ul>
 </blockquote>
-
+</font>
             </div>
         
         <footer class="article-footer">
