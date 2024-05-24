@@ -184,7 +184,7 @@
                             &nbsp;
                             Docker
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker-compose-Halo/">Docker-compose-Halo</a></li>  <li class="file"><a href="/wiki/Docker-Compose-Install/">Docker && Compose Install</a></li>  <li class="file"><a href="/wiki/Docker-Bash-Command/">Docker Bash Command</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker-compose-Halo/">Docker-compose-Halo</a></li>  <li class="file"><a href="/wiki/Docker-Compose-Install/">Docker && Compose Install</a></li>  <li class="file"><a href="/wiki/Docker-Bash-Command/">Docker Bash Command</a></li>  <li class="file"><a href="/wiki/Docker-compose-TTRSS/">Docker-compose-TTRSS</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -276,6 +276,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-Docker-compose-TTRSS" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Docker/">Docker</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/Docker-compose-TTRSS/">
+            <time datetime="2024-05-24T04:57:50.000Z" itemprop="datePublished">2024-05-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/raw/main/source/_posts/Docker-compose-TTRSS.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/edit/main/source/_posts/Docker-compose-TTRSS.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/commits/main/source/_posts/Docker-compose-TTRSS.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/Docker-compose-TTRSS/">Docker-compose-TTRSS</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&quot;3&quot;</span></span><br><span class="line">services:</span><br><span class="line">  rss:</span><br><span class="line">    image: wangqiru/ttrss:latest</span><br><span class="line">    container_name: ttrss</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">2077</span>:<span class="number">80</span></span><br><span class="line">    environment:</span><br><span class="line">      - SELF_URL_PATH=http:<span class="comment">//localhost:2077/</span></span><br><span class="line">      - DB_PASS=ttrss</span><br><span class="line">      - PUID=<span class="number">1000</span></span><br><span class="line">      - PGID=<span class="number">1000</span></span><br><span class="line">    volumes:</span><br><span class="line">      - feed-icons:/var/www/feed-icons/</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">      - database_only</span><br><span class="line">    stdin_open: <span class="literal">true</span></span><br><span class="line">    tty: <span class="literal">true</span></span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  mercury:</span><br><span class="line">    image: wangqiru/mercury-parser-api:latest</span><br><span class="line">    container_name: mercury</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  opencc:</span><br><span class="line">    image: wangqiru/opencc-api-server:latest</span><br><span class="line">    container_name: opencc</span><br><span class="line">    environment:</span><br><span class="line">      - NODE_ENV=production</span><br><span class="line">    networks:</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  database:</span><br><span class="line">    image: postgres:<span class="number">13</span>-alpine</span><br><span class="line">    container_name: postgres</span><br><span class="line">    environment:</span><br><span class="line">      - POSTGRES_PASSWORD=ttrss</span><br><span class="line">    volumes:</span><br><span class="line">      - ./postgres/data/:/var/lib/postgresql/data</span><br><span class="line">    networks:</span><br><span class="line">      - database_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  feed-icons:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  public_access:</span><br><span class="line">  service_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line">  database_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一–代理方式"><a href="#1-注意一–代理方式" class="headerlink" title="1.注意一–代理方式"></a>1.注意一–代理方式</h4><ul>
+<li>Nginx Proxy Manager<br>  正常代理即可，无需其它处理</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/wiki/Docker-compose-TTRSS/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-Incentive" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -666,11 +770,11 @@
                 
                 
                     
-                    <p><h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;<span class="number">3.9</span>&#x27;  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: &#x27;halohub/halo:<span class="number">2.15</span>&#x27;  </span><br><span class="line">        volumes:  </span><br><span class="line">            - &#x27;~/.halo2:/root/.halo2&#x27;  </span><br><span class="line">        ports:  </span><br><span class="line">            - &#x27;<span class="number">8090</span>:<span class="number">8090</span>&#x27;  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
+                    <p><h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.9&#x27;</span>  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: <span class="string">&#x27;halohub/halo:2.15&#x27;</span>  </span><br><span class="line">        volumes:  </span><br><span class="line">            - <span class="string">&#x27;~/.halo2:/root/.halo2&#x27;</span>  </span><br><span class="line">        ports:  </span><br><span class="line">            - <span class="string">&#x27;8090:8090&#x27;</span>  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
+
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
 <h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
 <p>
                 
             
