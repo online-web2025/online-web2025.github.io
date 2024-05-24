@@ -78,34 +78,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker-compose-Halo</title>
-    <url>/wiki/Docker-compose-Halo/</url>
-    <content><![CDATA[<p>本文为Docker-compose-Halo项目的业务代码，且进行一些配置的说明</p>
-<span id="more"></span>
-<h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.9&#x27;</span>  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: <span class="string">&#x27;halohub/halo:2.15&#x27;</span>  </span><br><span class="line">        volumes:  </span><br><span class="line">            - <span class="string">&#x27;~/.halo2:/root/.halo2&#x27;</span>  </span><br><span class="line">        ports:  </span><br><span class="line">            - <span class="string">&#x27;8090:8090&#x27;</span>  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
-<h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
-<ul>
-<li>~.&#x2F;halo2必须存在，否则工程无法的正常运行</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<ul>
-<li><a href></a></li>
-<li><a href></a></li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker-compose-TTRSS</title>
     <url>/wiki/Docker-compose-TTRSS/</url>
     <content><![CDATA[<p> 本文为Docker-compose-TTRSS项目的业务代码，且进行一些配置的说明</p>
@@ -127,6 +99,34 @@
 
 
 
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href></a></li>
+<li><a href></a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker-compose-Halo</title>
+    <url>/wiki/Docker-compose-Halo/</url>
+    <content><![CDATA[<p>本文为Docker-compose-Halo项目的业务代码，且进行一些配置的说明</p>
+<span id="more"></span>
+<h3 id="Docker-compose-yml"><a href="#Docker-compose-yml" class="headerlink" title="Docker-compose.yml"></a>Docker-compose.yml</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.9&#x27;</span>  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: <span class="string">&#x27;halohub/halo:2.15&#x27;</span>  </span><br><span class="line">        volumes:  </span><br><span class="line">            - <span class="string">&#x27;~/.halo2:/root/.halo2&#x27;</span>  </span><br><span class="line">        ports:  </span><br><span class="line">            - <span class="string">&#x27;8090:8090&#x27;</span>  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
+<h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
+<ul>
+<li>~.&#x2F;halo2必须存在，否则工程无法的正常运行</li>
+</ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
 <ul>
 <li><a href></a></li>
