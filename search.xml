@@ -299,11 +299,10 @@ Hexo使用技巧
     <url>/wiki/Incentive/</url>
     <content><![CDATA[<font size="3">
 This is a page showing cute girls!！</font>
-meanwhile it is also an incentive！
-<span id="more"></span>
-### A cute cat girl
-![cutecat](cutecat.png)
 
+<p>meanwhile it is also an incentive！</p>
+<span id="more"></span>
+<h3 id="A-cute-cat-girl"><a href="#A-cute-cat-girl" class="headerlink" title="A cute cat girl"></a>A cute cat girl</h3><p><img src="/wiki/Incentive/cutecat.png" alt="cutecat"></p>
 <h3 id="A-angel-girl"><a href="#A-angel-girl" class="headerlink" title="A angel girl"></a>A angel girl</h3><p><img src="/wiki/Incentive/angel.png" alt="angel"></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
 <ul>
