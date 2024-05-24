@@ -46,7 +46,7 @@ setInterval(updateCurrentTime, 1000);
 </script>
 
 
-<h2 id="Wordlist"><a href="#Wordlist" class="headerlink" title="Wordlist"></a>Wordlist</h2><h3 id="2024-05-24"><a href="#2024-05-24" class="headerlink" title="2024-05-24"></a>2024-05-24</h3><p><time>2024-05-24 20:53:56</time></p>
+<h2 id="Wordlist"><a href="#Wordlist" class="headerlink" title="Wordlist"></a>Wordlist</h2><h3 id="2024-05-24"><a href="#2024-05-24" class="headerlink" title="2024-05-24"></a>2024-05-24</h3><p><time>2024-05-24T21:30:29</time></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">herd n. 一般民众 vi.(把...)赶到一起，聚到一起</span><br><span class="line">spur vt. 促进，加速</span><br><span class="line">discourse n.话语，语篇，演讲</span><br></pre></td></tr></table></figure>
 
 
@@ -297,10 +297,7 @@ Hexo使用技巧
   <entry>
     <title>Incentive</title>
     <url>/wiki/Incentive/</url>
-    <content><![CDATA[<font size="3">
-This is a page showing cute girls!！</font>
-
-<p>meanwhile it is also an incentive！</p>
+    <content><![CDATA[<p><font size="3">This is a page showing cute girls!！</font><br>meanwhile it is also an incentive！</p>
 <span id="more"></span>
 <h3 id="A-cute-cat-girl"><a href="#A-cute-cat-girl" class="headerlink" title="A cute cat girl"></a>A cute cat girl</h3><p><img src="/wiki/Incentive/cutecat.png" alt="cutecat"></p>
 <h3 id="A-angel-girl"><a href="#A-angel-girl" class="headerlink" title="A angel girl"></a>A angel girl</h3><p><img src="/wiki/Incentive/angel.png" alt="angel"></p>
