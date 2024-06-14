@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>自建CloudFare DockerHub镜像加速站 | Wiki</title>
+    
+    
+        <meta name="keywords" content="Docker,CloudFlare" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="自建 CloudFare DockerHub 镜像加速站   手摸手教你搭建基于Cloud flare的DockerHub镜像站。近期国内彻底封锁了dockerhub的官方镜像地址，各大学镜像站基本全下架，个人搭建DockerHub镜像站就很有必要。此文基于此目的搭建，并且已经实操验证此方法可行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自建CloudFare DockerHub镜像加速站">
+<meta property="og:url" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/index.html">
+<meta property="og:site_name" content="Wiki">
+<meta property="og:description" content="自建 CloudFare DockerHub 镜像加速站   手摸手教你搭建基于Cloud flare的DockerHub镜像站。近期国内彻底封锁了dockerhub的官方镜像地址，各大学镜像站基本全下架，个人搭建DockerHub镜像站就很有必要。此文基于此目的搭建，并且已经实操验证此方法可行。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/1.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/2.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/3.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/4.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/5.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/6.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/7.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/8.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/9.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/10.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/11.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/12.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/13.png">
+<meta property="og:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/14.png">
+<meta property="article:published_time" content="2024-06-14T02:51:28.000Z">
+<meta property="article:modified_time" content="2024-06-14T04:37:32.673Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="CloudFlare">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/images/16x16favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/Docker">码头</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/Docker">码头</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Docker
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Docker-compose-Halo/">Docker-compose-Halo</a></li>  <li class="file"><a href="/wiki/Docker-Compose-Install/">Docker && Compose Install</a></li>  <li class="file"><a href="/wiki/Docker-Bash-Command/">Docker Bash Command</a></li>  <li class="file"><a href="/wiki/Docker-compose-TTRSS/">Docker-compose-TTRSS</a></li>  <li class="file active"><a href="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/">自建CloudFare DockerHub镜像加速站</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Incentive
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/Incentive/">Incentive</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            使用技巧
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/%E4%B8%80%E4%B8%AAHexo%E7%9A%84%E5%8E%9F%E5%A7%8B%E6%95%99%E7%A8%8B/">一个Hexo的原始教程</a></li>  <li class="file"><a href="/wiki/Hexo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">Hexo使用技巧</a></li>  <li class="file"><a href="/wiki/Markdown%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE/">Markdown字体设置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            学习
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            English
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/DailyWord/">DailyWord</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/wiki/LiveStream/">LiveStream</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-镜像加速站" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Docker/">Docker</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CloudFlare/" rel="tag">CloudFlare</a>, <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/">
+            <time datetime="2024-06-14T02:51:28.000Z" itemprop="datePublished">2024-06-14</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/raw/main/source/_posts/镜像加速站.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/edit/main/source/_posts/镜像加速站.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/online-web2025/https://github.com/online-web2025/online-web2025.github.io/commits/main/source/_posts/镜像加速站.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            自建CloudFare DockerHub镜像加速站
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">工具概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">开始操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81cloudflare%E5%86%85%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text">一、cloudflare内的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BD%E5%86%85%E7%9A%84docker%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">二、国内的docker的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81docker%E5%86%85%E8%AE%BE%E7%BD%AE%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-number">2.3.</span> <span class="toc-text">三、docker内设置镜像源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p><font size="3"> 自建 CloudFare DockerHub 镜像加速站   </font><br>手摸手教你搭建基于Cloud flare的DockerHub镜像站。<br>近期国内彻底封锁了dockerhub的官方镜像地址，各大学镜像站基本全下架，个人搭建DockerHub镜像站就很有必要。<br>此文基于此目的搭建，并且已经实操验证此方法可行。</p>
+<span id="more"></span>
+<h2 id="工具概览"><a href="#工具概览" class="headerlink" title="工具概览"></a>工具概览</h2><ul>
+<li>1.一个域名(域名需要提前绑定到cloudflare)</li>
+<li>2.一个cloudflare账号</li>
+</ul>
+<h2 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h2><h3 id="一、cloudflare内的操作"><a href="#一、cloudflare内的操作" class="headerlink" title="一、cloudflare内的操作"></a>一、cloudflare内的操作</h3><p>1.登陆cloud flare<br>如果没有账号，请注册<a target="_blank" rel="noopener" href="https://dash.cloudflare.com/login">cloudflare注册</a>，注册完之后请绑定好自己的域名。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/1.png" alt="登陆cloud flare"><br>2.选择Workers和Pages<br>登陆之后，请如下图一样选择Workers和Pages。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/2.png" alt="选择work"><br>我下面会用我的二级域名docker.web3space.eu.org来演示，这个可以不用先添加记录。<br>来到Workers和Pages界面后，我们选择创建。如果你是第一次注册，你下面不会有项目创建记录。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/3.png" alt="选择创建"><br>3.创建一个Worker<br>创建一个Worker<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/4.png" alt="创建一个worker"><br>命名并保存，这里我命名为docker。你可以随便命名，这个不是重点。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/5.png" alt="命名并保存"><br>4.编辑代码<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/6.png" alt="编辑代码"><br>5.粘贴代码<br>来到这里，我们需要把默认提供的代码替换掉<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/7.png" alt="编辑代码"><br>将下面的代码复制到worker.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line">const hub_host = <span class="string">&#x27;registry-1.docker.io&#x27;</span></span><br><span class="line">const auth_url = <span class="string">&#x27;https://auth.docker.io&#x27;</span></span><br><span class="line">const workers_url = <span class="string">&#x27;https://docker.web3space.eu.org&#x27;</span></span><br><span class="line">//这里写自己的域名，这里我的是docker.web3space.eu.org</span><br><span class="line">/**</span><br><span class="line">* static files (404.html, sw.js, conf.js)</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">/** @<span class="built_in">type</span> &#123;RequestInit&#125; */</span><br><span class="line">const PREFLIGHT_INIT = &#123;</span><br><span class="line">// status: 204,</span><br><span class="line">headers: new Headers(&#123;</span><br><span class="line"><span class="string">&#x27;access-control-allow-origin&#x27;</span>: <span class="string">&#x27;*&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;access-control-allow-methods&#x27;</span>: <span class="string">&#x27;GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;access-control-max-age&#x27;</span>: <span class="string">&#x27;1728000&#x27;</span>,</span><br><span class="line">&#125;),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @param &#123;any&#125; body</span><br><span class="line">* @param &#123;number&#125; status</span><br><span class="line">* @param &#123;Object&lt;string, string&gt;&#125; headers</span><br><span class="line">*/</span><br><span class="line"><span class="keyword">function</span> makeRes(body, status = 200, headers = &#123;&#125;) &#123;</span><br><span class="line">headers[<span class="string">&#x27;access-control-allow-origin&#x27;</span>] = <span class="string">&#x27;*&#x27;</span></span><br><span class="line"><span class="built_in">return</span> new Response(body, &#123;status, headers&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @param &#123;string&#125; urlStr</span><br><span class="line">*/</span><br><span class="line"><span class="keyword">function</span> newUrl(urlStr) &#123;</span><br><span class="line">try &#123;</span><br><span class="line"><span class="built_in">return</span> new URL(urlStr)</span><br><span class="line">&#125; catch (err) &#123;</span><br><span class="line"><span class="built_in">return</span> null</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addEventListener(<span class="string">&#x27;fetch&#x27;</span>, e =&gt; &#123;</span><br><span class="line">const ret = fetchHandler(e)</span><br><span class="line">.catch(err =&gt; makeRes(<span class="string">&#x27;cfworker error:\n&#x27;</span> + err.stack, 502))</span><br><span class="line">e.respondWith(ret)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @param &#123;FetchEvent&#125; e</span><br><span class="line">*/</span><br><span class="line">async <span class="keyword">function</span> fetchHandler(e) &#123;</span><br><span class="line">const getReqHeader = (key) =&gt; e.request.headers.get(key);</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> url = new URL(e.request.url);</span><br><span class="line"></span><br><span class="line">// 修改 pre <span class="built_in">head</span> get 请求</span><br><span class="line">// 是否含有 %2F ，用于判断是否具有用户名与仓库名之间的连接符</span><br><span class="line">// 同时检查 %3A 的存在</span><br><span class="line"><span class="keyword">if</span> (!/%2F/.test(url.search) &amp;&amp; /%3A/.test(url.toString())) &#123;</span><br><span class="line"><span class="built_in">let</span> modifiedUrl = url.toString().replace(/%3A(?=.*?&amp;)/, <span class="string">&#x27;%3Alibrary%2F&#x27;</span>);</span><br><span class="line">url = new URL(modifiedUrl);</span><br><span class="line">console.log(`handle_url: <span class="variable">$&#123;url&#125;</span>`)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (url.pathname === <span class="string">&#x27;/token&#x27;</span>) &#123;</span><br><span class="line"><span class="built_in">let</span> token_parameter = &#123;</span><br><span class="line">headers: &#123;</span><br><span class="line"><span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;auth.docker.io&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: getReqHeader(<span class="string">&quot;User-Agent&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept&#x27;</span>: getReqHeader(<span class="string">&quot;Accept&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept-Language&#x27;</span>: getReqHeader(<span class="string">&quot;Accept-Language&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept-Encoding&#x27;</span>: getReqHeader(<span class="string">&quot;Accept-Encoding&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;Cache-Control&#x27;</span>: <span class="string">&#x27;max-age=0&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">let</span> token_url = auth_url + url.pathname + url.search</span><br><span class="line"><span class="built_in">return</span> fetch(new Request(token_url, e.request), token_parameter)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 修改 <span class="built_in">head</span> 请求</span><br><span class="line"><span class="keyword">if</span> (/^\/v2\/[^/]+\/[^/]+\/[^/]+$/.test(url.pathname) &amp;&amp; !/^\/v2\/library/.test(url.pathname)) &#123;</span><br><span class="line">url.pathname = url.pathname.replace(/\/v2\//, <span class="string">&#x27;/v2/library/&#x27;</span>);</span><br><span class="line">console.log(`modified_url: <span class="variable">$&#123;url.pathname&#125;</span>`)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url.hostname = hub_host;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> parameter = &#123;</span><br><span class="line">headers: &#123;</span><br><span class="line"><span class="string">&#x27;Host&#x27;</span>: hub_host,</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: getReqHeader(<span class="string">&quot;User-Agent&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept&#x27;</span>: getReqHeader(<span class="string">&quot;Accept&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept-Language&#x27;</span>: getReqHeader(<span class="string">&quot;Accept-Language&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Accept-Encoding&#x27;</span>: getReqHeader(<span class="string">&quot;Accept-Encoding&quot;</span>),</span><br><span class="line"><span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;Cache-Control&#x27;</span>: <span class="string">&#x27;max-age=0&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line">cacheTtl: 3600</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (e.request.headers.has(<span class="string">&quot;Authorization&quot;</span>)) &#123;</span><br><span class="line">parameter.headers.Authorization = getReqHeader(<span class="string">&quot;Authorization&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> original_response = await fetch(new Request(url, e.request), parameter)</span><br><span class="line"><span class="built_in">let</span> original_response_clone = original_response.clone();</span><br><span class="line"><span class="built_in">let</span> original_text = original_response_clone.body;</span><br><span class="line"><span class="built_in">let</span> response_headers = original_response.headers;</span><br><span class="line"><span class="built_in">let</span> new_response_headers = new Headers(response_headers);</span><br><span class="line"><span class="built_in">let</span> status = original_response.status;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (new_response_headers.get(<span class="string">&quot;Www-Authenticate&quot;</span>)) &#123;</span><br><span class="line"><span class="built_in">let</span> auth = new_response_headers.get(<span class="string">&quot;Www-Authenticate&quot;</span>);</span><br><span class="line"><span class="built_in">let</span> re = new RegExp(auth_url, <span class="string">&#x27;g&#x27;</span>);</span><br><span class="line">new_response_headers.set(<span class="string">&quot;Www-Authenticate&quot;</span>, response_headers.get(<span class="string">&quot;Www-Authenticate&quot;</span>).replace(re, workers_url));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (new_response_headers.get(<span class="string">&quot;Location&quot;</span>)) &#123;</span><br><span class="line"><span class="built_in">return</span> httpHandler(e.request, new_response_headers.get(<span class="string">&quot;Location&quot;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> response = new Response(original_text, &#123;</span><br><span class="line">status,</span><br><span class="line">headers: new_response_headers</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">return</span> response;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @param &#123;Request&#125; req</span><br><span class="line">* @param &#123;string&#125; pathname</span><br><span class="line">*/</span><br><span class="line"><span class="keyword">function</span> httpHandler(req, pathname) &#123;</span><br><span class="line">const reqHdrRaw = req.headers</span><br><span class="line"></span><br><span class="line">// preflight</span><br><span class="line"><span class="keyword">if</span> (req.method === <span class="string">&#x27;OPTIONS&#x27;</span> &amp;&amp;</span><br><span class="line">reqHdrRaw.has(<span class="string">&#x27;access-control-request-headers&#x27;</span>)</span><br><span class="line">) &#123;</span><br><span class="line"><span class="built_in">return</span> new Response(null, PREFLIGHT_INIT)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> rawLen = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">const reqHdrNew = new Headers(reqHdrRaw)</span><br><span class="line"></span><br><span class="line">const refer = reqHdrNew.get(<span class="string">&#x27;referer&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> urlStr = pathname</span><br><span class="line"></span><br><span class="line">const urlObj = newUrl(urlStr)</span><br><span class="line"></span><br><span class="line">/** @<span class="built_in">type</span> &#123;RequestInit&#125; */</span><br><span class="line">const reqInit = &#123;</span><br><span class="line">method: req.method,</span><br><span class="line">headers: reqHdrNew,</span><br><span class="line">redirect: <span class="string">&#x27;follow&#x27;</span>,</span><br><span class="line">body: req.body</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> proxy(urlObj, reqInit, rawLen)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*</span><br><span class="line">* @param &#123;URL&#125; urlObj</span><br><span class="line">* @param &#123;RequestInit&#125; reqInit</span><br><span class="line">*/</span><br><span class="line">async <span class="keyword">function</span> proxy(urlObj, reqInit, rawLen) &#123;</span><br><span class="line">const res = await fetch(urlObj.href, reqInit)</span><br><span class="line">const resHdrOld = res.headers</span><br><span class="line">const resHdrNew = new Headers(resHdrOld)</span><br><span class="line"></span><br><span class="line">// verify</span><br><span class="line"><span class="keyword">if</span> (rawLen) &#123;</span><br><span class="line">const newLen = resHdrOld.get(<span class="string">&#x27;content-length&#x27;</span>) || <span class="string">&#x27;&#x27;</span></span><br><span class="line">const badLen = (rawLen !== newLen)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (badLen) &#123;</span><br><span class="line"><span class="built_in">return</span> makeRes(res.body, 400, &#123;</span><br><span class="line"><span class="string">&#x27;--error&#x27;</span>: `bad len: <span class="variable">$&#123;newLen&#125;</span>, except: <span class="variable">$&#123;rawLen&#125;</span>`,</span><br><span class="line"><span class="string">&#x27;access-control-expose-headers&#x27;</span>: <span class="string">&#x27;--error&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">const status = res.status</span><br><span class="line">resHdrNew.<span class="built_in">set</span>(<span class="string">&#x27;access-control-expose-headers&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">resHdrNew.<span class="built_in">set</span>(<span class="string">&#x27;access-control-allow-origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">resHdrNew.<span class="built_in">set</span>(<span class="string">&#x27;Cache-Control&#x27;</span>, <span class="string">&#x27;max-age=1500&#x27;</span>)</span><br><span class="line"></span><br><span class="line">resHdrNew.delete(<span class="string">&#x27;content-security-policy&#x27;</span>)</span><br><span class="line">resHdrNew.delete(<span class="string">&#x27;content-security-policy-report-only&#x27;</span>)</span><br><span class="line">resHdrNew.delete(<span class="string">&#x27;clear-site-data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">return</span> new Response(res.body, &#123;</span><br><span class="line">status,</span><br><span class="line">headers: resHdrNew</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/8.png" alt="复制然后部署"></p>
+<p>6.添加路由与域名设置<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/9.png" alt="添加路由"><br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/10.png" alt="继续添加路由"><br>加入docker.web3space.eu.org&#x2F;*，后面的&#x2F;*是必须的。区域里面，选择主域名web3space.eu.org(这一步一般会默认选择)。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/11.png" alt="继续添加路由"><br>添加CDN记录，代理是必须的，不能关。代理域名除了8.8.8.8，1.1.1.1也可以。<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/12.png" alt="添加CDN"><br>验证是否搭建成功，可以访问<a target="_blank" rel="noopener" href="https://docker.web3space.eu.org/,%E5%A6%82%E6%9E%9C%E7%95%8C%E9%9D%A2%E4%B8%BA%E4%B8%8B%E9%9D%A2%EF%BC%8C%E5%88%99%E6%88%90%E5%8A%9F%E9%83%A8%E7%BD%B2%E3%80%82">https://docker.web3space.eu.org/,如果界面为下面，则成功部署。</a><br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/13.png" alt="回复404"><br>可以试试 docker pull docker.web3space.eu.org&#x2F;mysql&#x2F;mysql-server<br>这里我默认认为你已经装好了dockers<br><img src="/wiki/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E7%AB%99/14.png" alt="在docker里面的试试"></p>
+<h3 id="二、国内的docker的安装"><a href="#二、国内的docker的安装" class="headerlink" title="二、国内的docker的安装"></a>二、国内的docker的安装</h3><h3 id="三、docker内设置镜像源"><a href="#三、docker内设置镜像源" class="headerlink" title="三、docker内设置镜像源"></a>三、docker内设置镜像源</h3><p>将加速链接设置为全局可用，使用以下命令设置registry mirror：<br>一行一行执行我下面的命令<br>注意，一定要保证该文件符合json规范，否则Docker将不能启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br><span class="line"><span class="comment">##按i后，复制下面</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://docker.web3space.eu.org&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">##按下esc，然后:wq,保存成功</span></span><br></pre></td></tr></table></figure>
+<p>重新加载json配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p>重启Docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>部署完成，后续想加入其它镜像源，可以用下面的格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;https://镜像源1&quot;</span>,</span><br><span class="line">		       <span class="string">&quot;https://镜像源2&quot;</span>,</span><br><span class="line">  		       <span class="string">&quot;https://镜像源3&quot;</span> </span><br><span class="line">               ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/1007922">用 cloudflare worker 搭建一个 Docker 镜像</a></li>
+<li><a target="_blank" rel="noopener" href="https://hub.kengro.net/">一个镜像加速</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/LiveStream/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">LiveStream</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            John Doe &copy; 2024 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
