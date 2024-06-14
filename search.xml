@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker Bash Command</title>
+    <url>/wiki/Docker-Bash-Command/</url>
+    <content><![CDATA[<font size="3">
+本文为Docker Bash Command的一些基本指令集合
+<span id="more"></span>
+### Command
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>.docker-compose的使用非常类似于docker命令的使用，</span><br><span class="line">但是需要注意的是大部分的compose命令都需要到docker-compose.yml文件所在的目录下才能执行。</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.【Linux命令】docker-compose up</span><br><span class="line"></span><br><span class="line">【命令解释】 命令聚合每个容器的输出，命令退出时，所有容器都将停止。</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>.【Linux命令】docker-compose up -d</span><br><span class="line"></span><br><span class="line">【命令解释】 在后台启动容器并使它们保持运行。</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.【Linux命令】docker-compose logs -f</span><br><span class="line"></span><br><span class="line">【命令解释】 查看该容器的启动的日志打印(日志从头打印)。</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.【Linux命令】docker logs -f container_id</span><br><span class="line"></span><br><span class="line">【命令解释】 查看某一容器的启动的日志打印(日志从头打印)。</span><br><span class="line"></span><br><span class="line"><span class="number">6</span>.【Linux命令】docker logs -f --tail 数量词 container_id</span><br><span class="line"></span><br><span class="line">【命令解释】 查看某一容器的启动的日志打印(查看最后n条日志打印)。 </span><br><span class="line">例：docker logs -f --tail <span class="number">50</span> <span class="number">44</span>b</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>.【Linux命令】docker-compose stop</span><br><span class="line"></span><br><span class="line">【命令解释】 停止compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">8</span>.【Linux命令】docker-compose restart</span><br><span class="line"></span><br><span class="line">【命令解释】 重启compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">9</span>.【Linux命令】docker-compose kill</span><br><span class="line"></span><br><span class="line">【命令解释】 kill compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">10</span>.【Linux命令】docker-compose ps</span><br><span class="line"></span><br><span class="line">【命令解释】查看compose服务状态。</span><br><span class="line"></span><br><span class="line"><span class="number">11</span>.【Linux命令】docker-compose rm</span><br><span class="line"></span><br><span class="line">【命令解释】删除compose服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href></a></li>
+<li><a href></a></li>
+</ul>
+</blockquote>
+</font>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DailyWord</title>
     <url>/wiki/DailyWord/</url>
     <content><![CDATA[<p><font size="3">本文意在记录每日遇到的较难的英语单词，草稿纸容易丢掉，记录在云上更有性价比！</font><br><font size="3">此项目将会成为一个长寿项目，记录每天！</font></p>
@@ -95,13 +122,54 @@ setInterval(updateCurrentTime, 1000);
       </tags>
   </entry>
   <entry>
-    <title>Docker Bash Command</title>
-    <url>/wiki/Docker-Bash-Command/</url>
+    <title>Docker-compose-Halo</title>
+    <url>/wiki/Docker-compose-Halo/</url>
     <content><![CDATA[<font size="3">
-本文为Docker Bash Command的一些基本指令集合
+本文为Docker-compose-Halo项目的业务代码，且进行一些配置的说明
 <span id="more"></span>
-### Command
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>.docker-compose的使用非常类似于docker命令的使用，</span><br><span class="line">但是需要注意的是大部分的compose命令都需要到docker-compose.yml文件所在的目录下才能执行。</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.【Linux命令】docker-compose up</span><br><span class="line"></span><br><span class="line">【命令解释】 命令聚合每个容器的输出，命令退出时，所有容器都将停止。</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>.【Linux命令】docker-compose up -d</span><br><span class="line"></span><br><span class="line">【命令解释】 在后台启动容器并使它们保持运行。</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>.【Linux命令】docker-compose logs -f</span><br><span class="line"></span><br><span class="line">【命令解释】 查看该容器的启动的日志打印(日志从头打印)。</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.【Linux命令】docker logs -f container_id</span><br><span class="line"></span><br><span class="line">【命令解释】 查看某一容器的启动的日志打印(日志从头打印)。</span><br><span class="line"></span><br><span class="line"><span class="number">6</span>.【Linux命令】docker logs -f --tail 数量词 container_id</span><br><span class="line"></span><br><span class="line">【命令解释】 查看某一容器的启动的日志打印(查看最后n条日志打印)。 </span><br><span class="line">例：docker logs -f --tail <span class="number">50</span> <span class="number">44</span>b</span><br><span class="line"></span><br><span class="line"><span class="number">7</span>.【Linux命令】docker-compose stop</span><br><span class="line"></span><br><span class="line">【命令解释】 停止compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">8</span>.【Linux命令】docker-compose restart</span><br><span class="line"></span><br><span class="line">【命令解释】 重启compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">9</span>.【Linux命令】docker-compose kill</span><br><span class="line"></span><br><span class="line">【命令解释】 kill compose服务。</span><br><span class="line"></span><br><span class="line"><span class="number">10</span>.【Linux命令】docker-compose ps</span><br><span class="line"></span><br><span class="line">【命令解释】查看compose服务状态。</span><br><span class="line"></span><br><span class="line"><span class="number">11</span>.【Linux命令】docker-compose rm</span><br><span class="line"></span><br><span class="line">【命令解释】删除compose服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+### Docker-compose.yml
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.9&#x27;</span>  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: <span class="string">&#x27;halohub/halo:2.15&#x27;</span>  </span><br><span class="line">        volumes:  </span><br><span class="line">            - <span class="string">&#x27;~/.halo2:/root/.halo2&#x27;</span>  </span><br><span class="line">        ports:  </span><br><span class="line">            - <span class="string">&#x27;8090:8090&#x27;</span>  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
+<h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
+<ul>
+<li>~.&#x2F;halo2必须存在，否则工程无法的正常运行</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href></a></li>
+<li><a href></a></li>
+</ul>
+</blockquote>
+</font>]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker-compose-TTRSS</title>
+    <url>/wiki/Docker-compose-TTRSS/</url>
+    <content><![CDATA[<font size="3">
+ 本文为Docker-compose-TTRSS项目的业务代码，且进行一些配置的说明
+<span id="more"></span>
+### Docker-compose.yml
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&quot;3&quot;</span></span><br><span class="line">services:</span><br><span class="line">  rss:</span><br><span class="line">    image: wangqiru/ttrss:latest</span><br><span class="line">    container_name: ttrss</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">2077</span>:<span class="number">80</span></span><br><span class="line">    environment:</span><br><span class="line">      - SELF_URL_PATH=http:<span class="comment">//localhost:2077/</span></span><br><span class="line">      - DB_PASS=ttrss</span><br><span class="line">      - PUID=<span class="number">1000</span></span><br><span class="line">      - PGID=<span class="number">1000</span></span><br><span class="line">    volumes:</span><br><span class="line">      - feed-icons:/var/www/feed-icons/</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">      - database_only</span><br><span class="line">    stdin_open: <span class="literal">true</span></span><br><span class="line">    tty: <span class="literal">true</span></span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  mercury:</span><br><span class="line">    image: wangqiru/mercury-parser-api:latest</span><br><span class="line">    container_name: mercury</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  opencc:</span><br><span class="line">    image: wangqiru/opencc-api-server:latest</span><br><span class="line">    container_name: opencc</span><br><span class="line">    environment:</span><br><span class="line">      - NODE_ENV=production</span><br><span class="line">    networks:</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  database:</span><br><span class="line">    image: postgres:<span class="number">13</span>-alpine</span><br><span class="line">    container_name: postgres</span><br><span class="line">    environment:</span><br><span class="line">      - POSTGRES_PASSWORD=ttrss</span><br><span class="line">    volumes:</span><br><span class="line">      - ./postgres/data/:/var/lib/postgresql/data</span><br><span class="line">    networks:</span><br><span class="line">      - database_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  feed-icons:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  public_access:</span><br><span class="line">  service_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line">  database_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一–代理方式"><a href="#1-注意一–代理方式" class="headerlink" title="1.注意一–代理方式"></a>1.注意一–代理方式</h4><ul>
+<li>Nginx Proxy Manager<br>  正常代理即可，无需其它处理</li>
+<li>宝塔<br>  代理需要进行处理，在配置文件中添加如下代码：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#PROXY-START/</span></span><br><span class="line">location  ~* \.(gif|png|jpg|css|js|woff|woff2)$</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:181;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-Ssl on;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header  X-Frame-Options     SAMEORIGIN;</span><br><span class="line">    proxy_set_header  X-Forwarded-Proto   <span class="variable">$scheme</span>;</span><br><span class="line">    expires 12h;</span><br><span class="line">&#125;</span><br><span class="line">location /</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:181;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-Ssl on;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header  X-Frame-Options     SAMEORIGIN;</span><br><span class="line">    proxy_set_header  X-Forwarded-Proto   <span class="variable">$scheme</span>;</span><br><span class="line">    </span><br><span class="line">    add_header X-Cache <span class="variable">$upstream_cache_status</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Set Nginx Cache</span></span><br><span class="line">    </span><br><span class="line">    	add_header Cache-Control no-cache;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#PROXY-END/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-注意二–默认登陆账号与密码"><a href="#2-注意二–默认登陆账号与密码" class="headerlink" title="2.注意二–默认登陆账号与密码"></a>2.注意二–默认登陆账号与密码</h4><p>默认登陆账号与密码:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">帐号：admin</span><br><span class="line">密码：password</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-注意三"><a href="#3-注意三" class="headerlink" title="3.注意三"></a>3.注意三</h4><p>postgres中包含用户的账号等数据</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">- ./postgres/data/:/var/lib/postgresql/data</span><br></pre></td></tr></table></figure>
 
 
 
@@ -157,74 +225,6 @@ setInterval(updateCurrentTime, 1000);
 
 
 
-
-
-
-
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<ul>
-<li><a href></a></li>
-<li><a href></a></li>
-</ul>
-</blockquote>
-</font>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker-compose-Halo</title>
-    <url>/wiki/Docker-compose-Halo/</url>
-    <content><![CDATA[<font size="3">
-本文为Docker-compose-Halo项目的业务代码，且进行一些配置的说明
-<span id="more"></span>
-### Docker-compose.yml
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3.9&#x27;</span>  </span><br><span class="line">services:  </span><br><span class="line">    halo:  </span><br><span class="line">        image: <span class="string">&#x27;halohub/halo:2.15&#x27;</span>  </span><br><span class="line">        volumes:  </span><br><span class="line">            - <span class="string">&#x27;~/.halo2:/root/.halo2&#x27;</span>  </span><br><span class="line">        ports:  </span><br><span class="line">            - <span class="string">&#x27;8090:8090&#x27;</span>  </span><br><span class="line">        container_name: halo</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一："><a href="#1-注意一：" class="headerlink" title="1.注意一："></a>1.注意一：</h4><p>进入后台：</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">ip:port/console</span><br></pre></td></tr></table></figure>
-<h4 id="2-注意二："><a href="#2-注意二：" class="headerlink" title="2.注意二："></a>2.注意二：</h4><p>值得一提的</p>
-<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">- &#x27;~/.halo2:/root/.halo2&#x27;  </span><br></pre></td></tr></table></figure>
-<ul>
-<li>~.&#x2F;halo2必须存在，否则工程无法的正常运行</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<ul>
-<li><a href></a></li>
-<li><a href></a></li>
-</ul>
-</blockquote>
-</font>]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker-compose-TTRSS</title>
-    <url>/wiki/Docker-compose-TTRSS/</url>
-    <content><![CDATA[<font size="3">
- 本文为Docker-compose-TTRSS项目的业务代码，且进行一些配置的说明
-<span id="more"></span>
-### Docker-compose.yml
-<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">version: <span class="string">&quot;3&quot;</span></span><br><span class="line">services:</span><br><span class="line">  rss:</span><br><span class="line">    image: wangqiru/ttrss:latest</span><br><span class="line">    container_name: ttrss</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">2077</span>:<span class="number">80</span></span><br><span class="line">    environment:</span><br><span class="line">      - SELF_URL_PATH=http:<span class="comment">//localhost:2077/</span></span><br><span class="line">      - DB_PASS=ttrss</span><br><span class="line">      - PUID=<span class="number">1000</span></span><br><span class="line">      - PGID=<span class="number">1000</span></span><br><span class="line">    volumes:</span><br><span class="line">      - feed-icons:/var/www/feed-icons/</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">      - database_only</span><br><span class="line">    stdin_open: <span class="literal">true</span></span><br><span class="line">    tty: <span class="literal">true</span></span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  mercury:</span><br><span class="line">    image: wangqiru/mercury-parser-api:latest</span><br><span class="line">    container_name: mercury</span><br><span class="line">    networks:</span><br><span class="line">      - public_access</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  opencc:</span><br><span class="line">    image: wangqiru/opencc-api-server:latest</span><br><span class="line">    container_name: opencc</span><br><span class="line">    environment:</span><br><span class="line">      - NODE_ENV=production</span><br><span class="line">    networks:</span><br><span class="line">      - service_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">  database:</span><br><span class="line">    image: postgres:<span class="number">13</span>-alpine</span><br><span class="line">    container_name: postgres</span><br><span class="line">    environment:</span><br><span class="line">      - POSTGRES_PASSWORD=ttrss</span><br><span class="line">    volumes:</span><br><span class="line">      - ./postgres/data/:/var/lib/postgresql/data</span><br><span class="line">    networks:</span><br><span class="line">      - database_only</span><br><span class="line">    restart: always</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  feed-icons:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  public_access:</span><br><span class="line">  service_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line">  database_only:</span><br><span class="line">    internal: <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><h4 id="1-注意一–代理方式"><a href="#1-注意一–代理方式" class="headerlink" title="1.注意一–代理方式"></a>1.注意一–代理方式</h4><ul>
-<li>Nginx Proxy Manager<br>  正常代理即可，无需其它处理</li>
-<li>宝塔<br>  代理需要进行处理，在配置文件中添加如下代码：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#PROXY-START/</span></span><br><span class="line">location  ~* \.(gif|png|jpg|css|js|woff|woff2)$</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:181;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-Ssl on;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header  X-Frame-Options     SAMEORIGIN;</span><br><span class="line">    proxy_set_header  X-Forwarded-Proto   <span class="variable">$scheme</span>;</span><br><span class="line">    expires 12h;</span><br><span class="line">&#125;</span><br><span class="line">location /</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:181;</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-Ssl on;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header  X-Frame-Options     SAMEORIGIN;</span><br><span class="line">    proxy_set_header  X-Forwarded-Proto   <span class="variable">$scheme</span>;</span><br><span class="line">    </span><br><span class="line">    add_header X-Cache <span class="variable">$upstream_cache_status</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Set Nginx Cache</span></span><br><span class="line">    </span><br><span class="line">    	add_header Cache-Control no-cache;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#PROXY-END/</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="2-注意二–默认登陆账号与密码"><a href="#2-注意二–默认登陆账号与密码" class="headerlink" title="2.注意二–默认登陆账号与密码"></a>2.注意二–默认登陆账号与密码</h4><p>默认登陆账号与密码:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">帐号：admin</span><br><span class="line">密码：password</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-注意三"><a href="#3-注意三" class="headerlink" title="3.注意三"></a>3.注意三</h4><p>postgres中包含用户的账号等数据</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">- ./postgres/data/:/var/lib/postgresql/data</span><br></pre></td></tr></table></figure>
 
 
 
@@ -319,17 +319,18 @@ Hexo使用技巧
   <entry>
     <title>Incentive</title>
     <url>/wiki/Incentive/</url>
-    <content><![CDATA[<p><font size="3">This is a page showing cute girls!！</font><br>meanwhile it is also an incentive！</p>
-<span id="more"></span>
-<h3 id="A-cute-cat-girl"><a href="#A-cute-cat-girl" class="headerlink" title="A cute cat girl"></a>A cute cat girl</h3><p><img src="/wiki/Incentive/cutecat.png" alt="cutecat"></p>
-<h3 id="A-angel-girl"><a href="#A-angel-girl" class="headerlink" title="A angel girl"></a>A angel girl</h3><p><img src="/wiki/Incentive/angel.png" alt="angel"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
-<ul>
-<li><a href></a></li>
-<li><a href></a></li>
-</ul>
-</blockquote>
-]]></content>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="b53549296974ca4b0c846525c1ab8cafe1f5318ee224fc82b72d0498f6dc261f">3fc6737b4ddbc3056182ddb1dceb8ff4104d7baffef20309d269a48fa7e637c6eb585ef595990b3c3768aa1a54dbb874d53d29566bfa1e1e0f2c6663ed7ce92bb889d91f9ecfc290831829e2ab9414a3211dae8ebdfb5c9b73bf6184637ad1387cf3870e8ab8947ec42ac115d7d4cde5d149f379a558f57cdd2294c91bb41cd0f074273a3ad5ac4ee65b64ea307bb42085ef59a5d8b22470cfd94fae0247b0ade5e6909efaf4cd34d28221f40b127a230101d52abf983911ab342e3b7ebb6f6162204c20659dd36d9991b1c2f153d50b69e0f27e5dd0093f08a570696407aa2bea8215087a7d1d2646fd8654a77370b5ce7a25982ac65905755f45965834664987d9a6c23cbded155566e735ad2615b12190829868b56dc86e68423991e44bb8421debb968679b41e5b1ef2b1fd3b1a62c20099274f53fec7dfc3233c5c6627ec8e9f99080a9463e6fa2c401b6eeae6478b1ac5b9d7359aaff08655cc52e49eaee0d3f23975e851f3ea6f3c8dfc301eff0ef3e27e134ec2db06fa1ae054b8b155e760acb0198517b426237f7e6a6af1f3b9bd039c5955993f42488e87bfcb178bf23e5f101d00eb90a413028ccbdba7670088e68b8f261998ca39ec661f96e8ff94bb5f92deab9e457275343060efc2a4995fed396f46d0bbcc0ccaeea3366d81a5e5d09494624bf121d298bfd07696382729886a99d218e5b8a6a90d8b3f954478ac111578de181957ccd982e93cebf0b6e072023a8f0d85630a5697bf9d91553a08a5e17d2729e188a6b2b97a183cc8653fff0bfc1e96aed850564da2006c202ab9186f9176a8d9486739d649f743b725bb3f0c750ec4057de22d44f90c219c479c1ad70e37c6c2724fdecfa211fd774bc975ea32b7a3dccf2c75ef7eb1cd9676559f6c074500c45d6656449b7d4e360a73bfdca741605899b0be94b2ad658e177206b5a3823a6c8802a44c7283cf8017cf03724413781161fc0c33e2dee4a</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>Incentive</category>
       </categories>
